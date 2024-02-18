@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        .container {
+            /* display: flex;
+            justify-content: center;
+            flex-direction: column; */
+            width: 30%;
+            min-width: 200px;
+            margin: auto;
+            padding: 20px;
+
+        }
+
+        h1 {
+            /* text-align: center; */
+            color: #1414c0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <title>
+        <%= list.name %>
+    </title>
+</head>
+
+<body class="container">
+
+    <h1>
+        <%= list.name %>
+    </h1>
+
+    <ul>
+        <% if (list && list.items) { %>
+            <% list.items.forEach(function(item) { %>
+                <li>
+                    <%= item.newItem %>
+                </li>
+                <% }); %>
+                    <% } else { %>
+                        <li>No items found</li>
+                        <% } %>
+    </ul>
+    <a href="/redirect-home">Go back to home</a>
+    <form action="/list/<%= list.name %>/add-item" method="POST">
+        <input type="text" name="newItem" placeholder="New Item">
+        <button type="submit">Add Item</button>
+    </form>
+</body>
+
+</html>
